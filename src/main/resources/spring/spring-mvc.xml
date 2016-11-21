@@ -10,5 +10,15 @@
  	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
  	http://www.springframework.org/schema/context
  	http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+ 	
+ 	<!-- 自动扫描该包下的Spring组件（controller、service、repository等）注解，无需在xml中配置bean，<context:component-scan>已经包含了<context:annotation-config/>标签的功能 -->
+	<context:component-scan base-package="personal.chencs.learn" />
+	
+	<!-- 配置视图解析器 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 配置前缀和后缀 -->
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
 
 </beans>
