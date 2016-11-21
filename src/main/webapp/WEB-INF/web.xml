@@ -7,11 +7,61 @@
 						http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd">
 
    <display-name>Java Web Application</display-name>
+   
+    <!-- 激活web应用服务器（如tomcat）的defaultServlet来处理静态文件 -->
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.js</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.css</url-pattern>
+	</servlet-mapping>  
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.jpg</url-pattern>
+	</servlet-mapping>
 
 	<!-- 配置欢迎页面，默认目录是webapp,按先后顺序进行查找，找到了前面指定的页面则后面的配置都不起作用 -->
 	<welcome-file-list>
+		<!-- index。jsp无需激活defaultServlet就可以访问，而index.html需要激活defaultServlet处理静态资源 -->
 		<welcome-file>/WEB-INF/pages/index.html</welcome-file>
 		<welcome-file>/WEB-INF/pages/index.jsp</welcome-file>
 	</welcome-file-list>
+	
+	<!-- 配置Spring监听器 ，在启动Web容器时，自动装配WEB-INFO目录下的 applicationContext.xml的Spring beans配置信息-->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<!-- 指定Spring Bean的配置文件所在目录。默认配置在WEB-INF目录下-->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring/applicationContext.xml</param-value>
+	</context-param>  
+	
+	<!-- Spring MVC配置 -->
+   <servlet>
+      <servlet-name>springMVC</servlet-name>
+      <servlet-class>
+         org.springframework.web.servlet.DispatcherServlet
+      </servlet-class>
+      <!-- 可以自定义servlet.xml配置文件的位置和名称，默认为WEB-INF目录下，名称为[<servlet-name>]-servlet.xml-->
+	  <init-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring/spring-mvc.xml</param-value>
+	  </init-param>
+	  <load-on-startup>1</load-on-startup>
+   </servlet>
+   
+	<!--配置DispatcherServlet所需要拦截的 url-->
+   <servlet-mapping>
+      <servlet-name>springMVC</servlet-name>
+      <url-pattern>/</url-pattern>
+   </servlet-mapping>
 
 </web-app>
