@@ -9,7 +9,7 @@
 		
 		<a href="greeting">greeting</a><br><br>
 		
-		<form action="user/queryByName" method="get">
+		<form action="user/queryByName" method="post">
 			<input name="name" placeholder="name" type="text" required="required"/>
 			<input type="submit" value="submit">
 		</form>
