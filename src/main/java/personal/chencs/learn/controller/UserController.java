@@ -1,5 +1,7 @@
 package personal.chencs.learn.controller;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,17 +15,22 @@ import personal.chencs.learn.service.UserService;
 @RequestMapping("user")
 public class UserController {
 	
+	private static Logger logger = LogManager.getLogger(UserController.class);
+	
 	@Autowired
 	private UserService userService;
 	
 	@RequestMapping(value = "/queryByName", method = RequestMethod.POST)
 	public String queryByName(ModelMap model, String name){
-		System.out.println("input:" + name);
+		logger.info("enter action: queryByName");
+		logger.info("name:" + name);
 		
 		User user = userService.queryByName(name);
-
 		model.addAttribute("user", user);
 		
+		logger.info("exit action: queryByName");
+		
 		return "user/show";
+
 	}
 }

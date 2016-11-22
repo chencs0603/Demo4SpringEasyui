@@ -32,6 +32,29 @@
 		<welcome-file>/WEB-INF/pages/index.jsp</welcome-file>
 		<welcome-file>/WEB-INF/pages/index.html</welcome-file>
 	</welcome-file-list>
+
+	<!-- log4jConfigLocation：log4j配置文件存放路径 -->
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>classpath:properties/log4j.properties</param-value>
+	</context-param>
+	<!-- Spring刷新Log4j配置文件变动的间隔,单位为毫秒 -->
+	<context-param>
+		<param-name>log4jRefreshInterval</param-name>
+		<param-value>10000</param-value>
+	</context-param> 
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+	
+	<!-- webAppRootKey：值缺省为webapp.root，当tomcat下部署多个应用时(每个都用到了log4j)，
+		每个应用的web.xml中都要配置该参数，该参数与Log4j.xml文件中的${webapp.root}
+		否则每个应用的webAppRootKey值都相同，就会引起冲突
+	 -->
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>webapp.root</param-value>
+	</context-param>
 	
 	<!-- 配置Spring监听器 ，在启动Web容器时，自动装配WEB-INFO目录下的 applicationContext.xml的Spring beans配置信息-->
 	<listener>

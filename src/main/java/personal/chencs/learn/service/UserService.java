@@ -1,5 +1,7 @@
 package personal.chencs.learn.service;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +15,20 @@ import personal.chencs.learn.domain.User;
  */
 @Service
 public class UserService {
+	private static Logger logger = LogManager.getLogger(UserService.class);
 	
 	@Autowired
 	private UserDao userDao;
 	
 	public User queryByName(String name){
-		return userDao.queryByName(name);
+		logger.info("enter UserService: queryByName");
+		logger.info("name:" + name);
+		
+		User user = userDao.queryByName(name);
+		
+		logger.info("user:" + user);
+		logger.info("exit UserService: queryByName");
+		
+		return user;
 	}
 }
