@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="commons/jquery-easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="commons/jquery-easyui/themes/icon.css">
+
+    <script type="text/javascript" src="commons/jquery-easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="commons/jquery-easyui/jquery.easyui.min.js"></script>
+    <title>登录</title>
+</head>
+<body style="background-color: #6699cc">
+<div style="width: 30%; margin-left: 35%; height: 30%; margin-top: 10%;">
+    <div class="easyui-panel" title="会员登录" style="width:400px">
+        <form id="loginForm" class="easyui-form" method="post" data-options="novalidate:true">
+            <div style="text-align:center;padding:10px 60px 20px 60px">
+                <table cellpadding="5">
+                    <tr>
+                       <td>username:</td>
+                       <td><input class="easyui-textbox" type="text" name="name" data-options="required:true"></input></td>
+                    </tr>
+                    <tr>
+                       <td>password:</td>
+                        <td><input class="easyui-textbox" type="text" name="password" data-options="required:true"></input></td>
+                    </tr>
+                </table>
+                <br>
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="login()" style="text-align:center;width:50%;color: blue">登录</a>
+			</div>
+        </form>
+        <div style="text-align:right;margin:10px">
+            <a href="register.html" class="easyui-linkbutton">注册</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function login(){
+        $('#loginForm').form('submit',{
+            onSubmit:function(){
+                return $(this).form('enableValidation').form('validate');
+            }
+        });
+    }
+    
+</script>
+</body>
+</html>
