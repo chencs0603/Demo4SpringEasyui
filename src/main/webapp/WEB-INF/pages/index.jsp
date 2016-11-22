@@ -5,6 +5,7 @@
 		<title>Index</title>
 	</head>
 	<body>
-		welcome to my index jsp page!!!
+		welcome to my index jsp page!!!<br>
+		<a href="greeting">greeting</a>
 	</body>
 </html>

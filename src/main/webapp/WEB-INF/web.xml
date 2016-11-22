@@ -29,8 +29,8 @@
 	<!-- 配置欢迎页面，默认目录是webapp,按先后顺序进行查找，找到了前面指定的页面则后面的配置都不起作用 -->
 	<welcome-file-list>
 		<!-- index。jsp无需激活defaultServlet就可以访问，而index.html需要激活defaultServlet处理静态资源 -->
-		<welcome-file>/WEB-INF/pages/index.html</welcome-file>
 		<welcome-file>/WEB-INF/pages/index.jsp</welcome-file>
+		<welcome-file>/WEB-INF/pages/index.html</welcome-file>
 	</welcome-file-list>
 	
 	<!-- 配置Spring监听器 ，在启动Web容器时，自动装配WEB-INFO目录下的 applicationContext.xml的Spring beans配置信息-->
