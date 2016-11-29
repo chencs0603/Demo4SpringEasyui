@@ -29,6 +29,10 @@
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.gif</url-pattern>
 	</servlet-mapping>
+		<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.json</url-pattern>
+	</servlet-mapping>
 
 	<!-- 配置欢迎页面，默认目录是webapp,按先后顺序进行查找，找到了前面指定的页面则后面的配置都不起作用 -->
 	<welcome-file-list>

@@ -14,6 +14,8 @@
 		
 		<a href="register.html">注册</a><br><br>
 		
+		<a href="user.html">用户信息</a><br><br>
+		
 		<form action="user/queryByName" method="post">
 			<input name="name" placeholder="name" type="text" required="required"/>
 			<input type="submit" value="submit">
