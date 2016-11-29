@@ -22,11 +22,11 @@ public class UserService {
 	
 	public User queryByName(String name){
 		logger.info("enter UserService: queryByName");
-		logger.info("name:" + name);
+		logger.debug("name:" + name);
 		
 		User user = userDao.queryByName(name);
 		
-		logger.info("user:" + user);
+		logger.debug("user:" + user);
 		logger.info("exit UserService: queryByName");
 		
 		return user;
