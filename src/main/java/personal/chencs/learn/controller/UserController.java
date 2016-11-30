@@ -45,7 +45,7 @@ public class UserController {
 	}
 	
 	// 分页查询
-	@RequestMapping(value = "/queryByPage", method = RequestMethod.GET)
+	@RequestMapping(value = "/queryByPage", method = RequestMethod.GET, produces="application/json;charset=UTF-8")//若produces上配置json，则必须加上charset=UTF-8，否则还是会出现中文乱码
 	public @ResponseBody String queryByPage(ModelMap model, int page, int rows){
 		logger.info("enter action: query");
 		logger.debug("page:" + page + ", row:" + rows);
