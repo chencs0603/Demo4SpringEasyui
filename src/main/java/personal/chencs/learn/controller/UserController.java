@@ -1,8 +1,5 @@
 package personal.chencs.learn.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +17,7 @@ import personal.chencs.learn.domain.User;
 import personal.chencs.learn.service.UserService;
 
 @Controller
-@RequestMapping("user")
+@RequestMapping(value = "user", produces="application/json;charset=UTF-8")//若produces上配置json，则必须加上charset=UTF-8，否则还是会出现中文乱码,放在controller类上对该类的所有方法都起作用，但可以被方法上的配置覆盖
 public class UserController {
 	
 	private static Logger logger = LogManager.getLogger(UserController.class);
@@ -45,7 +42,7 @@ public class UserController {
 	}
 	
 	// 分页查询
-	@RequestMapping(value = "/queryByPage", method = RequestMethod.GET, produces="application/json;charset=UTF-8")//若produces上配置json，则必须加上charset=UTF-8，否则还是会出现中文乱码
+	@RequestMapping(value = "/queryByPage", method = RequestMethod.GET)
 	public @ResponseBody String queryByPage(ModelMap model, int page, int rows){
 		logger.info("enter action: query");
 		logger.debug("page:" + page + ", row:" + rows);
