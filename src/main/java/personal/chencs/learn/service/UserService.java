@@ -20,6 +20,11 @@ public class UserService {
 	@Autowired
 	private UserDao userDao;
 	
+	/**
+	 * 指定name查询
+	 * @param name
+	 * @return
+	 */
 	public User queryByName(String name){
 		logger.info("enter UserService: queryByName");
 		logger.debug("name:" + name);

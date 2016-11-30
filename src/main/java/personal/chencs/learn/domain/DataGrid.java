@@ -2,16 +2,22 @@ package personal.chencs.learn.domain;
 
 import java.util.List;
 
+/**
+ * DataGrid组件的数据结构
+ * @author chencs
+ *
+ * @param <T>
+ */
 public class DataGrid<T> {
 	
-	private int page;
+	private int total;
 	private List<T> rows;
 	
-	public int getPage() {
-		return page;
+	public int getTotal() {
+		return total;
 	}
-	public void setPage(int page) {
-		this.page = page;
+	public void setTotal(int total) {
+		this.total = total;
 	}
 	public List<T> getRows() {
 		return rows;
@@ -20,5 +26,4 @@ public class DataGrid<T> {
 		this.rows = rows;
 	}
 	
-
 }

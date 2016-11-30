@@ -27,6 +27,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	// 指定name查询
 	@RequestMapping(value = "/queryByName", method = RequestMethod.POST)
 	public String queryByName(ModelMap model, String name){
 		logger.info("enter action: queryByName");
@@ -42,8 +43,9 @@ public class UserController {
 
 	}
 	
-	@RequestMapping(value = "/query", method = RequestMethod.GET)
-	public @ResponseBody String query(ModelMap model, int page, int rows){
+	// 分页查询
+	@RequestMapping(value = "/queryByPage", method = RequestMethod.GET)
+	public @ResponseBody String queryByPage(ModelMap model, int page, int rows){
 		logger.info("enter action: query");
 		logger.debug("page:" + page + ", row:" + rows);
 		
@@ -57,7 +59,7 @@ public class UserController {
 		list.add(user);
 		
 		DataGrid<User> dataGrid = new DataGrid<>();
-		dataGrid.setPage(1);
+		dataGrid.setTotal(1);
 		dataGrid.setRows(list);
 
 		String json = JSON.toJSONString(dataGrid);
