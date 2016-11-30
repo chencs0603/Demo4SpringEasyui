@@ -2,6 +2,7 @@ package personal.chencs.learn.dao;
 
 import java.util.List;
 
+import personal.chencs.learn.domain.Pagination;
 import personal.chencs.learn.domain.User;
 
 /**
@@ -49,6 +50,19 @@ public interface UserDao {
 	 * @return
 	 */
 	public User queryByName(String name);
+	
+	/**
+	 * 查询总个数
+	 * @return
+	 */
+	public int queryCount();
+	
+	/**
+	 * 分页查询
+	 * @param pagination
+	 * @return
+	 */
+	public List<User> queryByPage(Pagination pagination);
 
 	/**
 	 * 查询所有User

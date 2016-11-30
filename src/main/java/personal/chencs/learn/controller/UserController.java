@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 
 import personal.chencs.learn.domain.DataGrid;
+import personal.chencs.learn.domain.Pagination;
 import personal.chencs.learn.domain.User;
 import personal.chencs.learn.service.UserService;
 
@@ -48,20 +49,10 @@ public class UserController {
 	public @ResponseBody String queryByPage(ModelMap model, int page, int rows){
 		logger.info("enter action: query");
 		logger.debug("page:" + page + ", row:" + rows);
-		
-		User user = new User();
-		user.setId(1);
-		user.setName("陈昌胜");
-		user.setPassword("123456");
-		user.setAge(27);
-		
-		List<User> list = new ArrayList<>();
-		list.add(user);
-		
-		DataGrid<User> dataGrid = new DataGrid<>();
-		dataGrid.setTotal(1);
-		dataGrid.setRows(list);
 
+		Pagination pagination = new Pagination(page, rows);
+		DataGrid<User> dataGrid = userService.queryByPage(pagination);
+		
 		String json = JSON.toJSONString(dataGrid);
 		
 		logger.debug("json:" + json);

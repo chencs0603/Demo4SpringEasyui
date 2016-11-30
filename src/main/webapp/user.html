@@ -18,7 +18,8 @@
 <div data-options="region:'center',title:'Center'">
     <h2>User List</h2>
     <div style="margin:20px 0;"></div>
-    <table class="easyui-datagrid" title="Users" data-options="fit:true, rownumber:true, pagination:true, singleSelect:true, collapsible:true, url:'user/queryByPage', method:'get'">
+	<!-- ata-options中加入fit：true会导致表格下面没有分页栏,原因可能是datagrid过高，导致看不到，fitColumns:true会出现分页栏，宽度会充满屏幕 -->
+    <table class="easyui-datagrid" title="Users" data-options=" rownumbers:true, pagination:true, singleSelect:true, url:'user/queryByPage', method:'get'">
         <thead>
 	        <tr>
 	            <th data-options="field:'id',width:80">ID</th>

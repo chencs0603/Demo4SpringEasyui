@@ -30,6 +30,14 @@
 		select * from user where name = #{name}
 	</select>
 	
+	<select id="queryCount" resultType="Integer">
+		select count(*) from user
+	</select>
+	
+	<select id="queryByPage" parameterType="personal.chencs.learn.domain.Pagination" resultMap="userMapper">
+		select * from user limit #{startRowNo}, #{pageSize}
+	</select>
+	
 	<select id="queryAll" resultMap="userMapper">
 		select * from user
 	</select>
