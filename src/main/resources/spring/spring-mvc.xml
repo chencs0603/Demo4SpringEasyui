@@ -13,6 +13,20 @@
  	
  	<!-- 自动扫描该包下的Spring组件（controller、service、repository等）注解，无需在xml中配置bean，<context:component-scan>已经包含了<context:annotation-config/>标签的功能 -->
 	<context:component-scan base-package="personal.chencs.learn" />
+
+	<!-- 使用@ResponseBoby将action返回的数据经默认的HttpMessageConverter转换后写入到Response对象的Body数据区，但HttpMessageConverter默认的编码方式为ISO-8859-1，会出现中文乱码的问题 -->
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/plain;charset=UTF-8</value>
+						<value>application/json;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 	
 	<!-- 配置视图解析器 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

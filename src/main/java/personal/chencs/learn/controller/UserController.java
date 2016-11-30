@@ -49,7 +49,7 @@ public class UserController {
 		
 		User user = new User();
 		user.setId(1);
-		user.setName("chencs");
+		user.setName("陈昌胜");
 		user.setPassword("123456");
 		user.setAge(27);
 		
