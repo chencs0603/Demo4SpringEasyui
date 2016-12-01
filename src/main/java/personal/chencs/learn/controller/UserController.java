@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
@@ -43,11 +44,12 @@ public class UserController {
 	
 	// 分页查询
 	@RequestMapping(value = "/queryByPage", method = RequestMethod.GET)
-	public @ResponseBody String queryByPage(ModelMap model, int page, int rows){
+	public @ResponseBody String queryByPage(ModelMap model, @RequestParam(value="page", required=true, defaultValue="1") int pageNo, 
+															@RequestParam(value="rows", required=true, defaultValue="10") int pageSize){
 		logger.info("enter action: query");
-		logger.debug("page:" + page + ", row:" + rows);
+		logger.debug("page:" + pageNo + ", row:" + pageSize);
 
-		Pagination pagination = new Pagination(page, rows);
+		Pagination pagination = new Pagination(pageNo, pageSize);
 		DataGrid<User> dataGrid = userService.queryByPage(pagination);
 		
 		String json = JSON.toJSONString(dataGrid);
