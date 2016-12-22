@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <title>ECharts</title>
     <!-- 引入 echarts.js -->
-    <script type="text/javascript"  src="commons/echarts.js"></script>
+    <script type="text/javascript"  src="commons/echarts.min.js"></script>
+    <script type="text/javascript" src="commons/jquery-easyui/jquery.min.js"></script>
 </head>
 <body>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
@@ -12,35 +13,42 @@
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
-
-        // 指定图表的配置项和数据
-        var option = {
+        
+     	// 显示标题，图例和空的坐标轴
+        myChart.setOption({
             title: {
-                text: 'ECharts 入门示例'
+                text: '异步数据加载示例'
             },
             tooltip: {},
             legend: {
-                data:[{
-                    name:'销量',
-                    icon:'rect',
-                    textStyle:{
-                        color:'green'
-                    }
-                }]
+                data:['销量']
             },
             xAxis: {
-                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+                data: []
             },
             yAxis: {},
             series: [{
                 name: '销量',
                 type: 'bar',
-                data: [5, 20, 36, 10, 10, 20]
+                data: []
             }]
-        };
+        });
 
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
+        // 异步加载数据
+        $.get('echart.json').done(function (data) {
+            // 填入数据
+            myChart.setOption({
+                xAxis: {
+                    data: data.categories
+                },
+                series: [{
+                    // 根据名字对应到相应的系列
+                    name: '销量',
+                    data: data.data
+                }]
+            });
+        });
+        
     </script>
 </body>
 </html>
