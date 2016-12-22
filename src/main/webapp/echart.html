@@ -10,6 +10,7 @@
 <body>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="main" style="width: 600px;height:400px;"></div>
+    
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
@@ -33,18 +34,34 @@
                 data: []
             }]
         });
-
+		// 显示加载动画
+		myChart.showLoading();
+     	
         // 异步加载数据
-        $.get('echart.json').done(function (data) {
+        $.get('/Demo4SpringEasyui/echart/getData').done(function (result) {
+        	// 隐藏加载动画
+        	myChart.hideLoading();
+        	if (null != result || result.length > 0) {
+                //初始化option.xAxis[0]中的data
+                 xAxisData=[];
+                 for(var i=0;i<result.length;i++){
+                	 xAxisData.push(result[i].category);
+                 }
+                 //初始化option.series[0]中的data
+                 seriesData=[];
+                 for(var i=0;i<result.length;i++){
+                	 seriesData.push(result[i].volume);
+                 }
+            }
             // 填入数据
             myChart.setOption({
                 xAxis: {
-                    data: data.categories
+                    data: xAxisData
                 },
                 series: [{
                     // 根据名字对应到相应的系列
                     name: '销量',
-                    data: data.data
+                    data: seriesData
                 }]
             });
         });
