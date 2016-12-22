@@ -20,5 +20,7 @@
 			<input name="name" placeholder="name" type="text" required="required"/>
 			<input type="submit" value="submit">
 		</form>
+		
+		<a href="echart.html">echart</a><br><br>
 	</body>
 </html>
