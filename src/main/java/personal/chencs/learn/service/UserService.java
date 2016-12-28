@@ -65,4 +65,22 @@ public class UserService {
 		
 		return dataGrid;
 	}
+	
+	/**
+	 * 新增用户
+	 * @param user
+	 * @return
+	 */
+	public boolean add(User user) {
+		if (null == user) {
+			return false;
+		}
+
+		try {
+			return userDao.add(user);
+		} catch (Exception e) {
+			logger.debug(e.getMessage());
+			return false;
+		}
+	}
 }

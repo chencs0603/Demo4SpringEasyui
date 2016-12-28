@@ -59,4 +59,18 @@ public class UserController {
 		
 		return json;
 	}
+	
+	// 新增用户
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public String add(ModelMap model, User user){
+		boolean result = userService.add(user);
+		
+		if(result){
+			model.addAttribute("result", true);
+			return "success";
+		}else{
+			model.addAttribute("result", false);
+			return "fail";
+		}
+	}
 }
