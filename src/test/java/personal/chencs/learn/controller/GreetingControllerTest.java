@@ -1,42 +1,14 @@
 package personal.chencs.learn.controller;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.ContextHierarchy;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
-//XML风格
-@RunWith(JUnit4ClassRunner.class)
-@WebAppConfiguration(value = "src/main/webapp")  
-//指定容器层次
-@ContextHierarchy({  
-        @ContextConfiguration(name = "parent", locations = "classpath:spring/applicationContext.xml"),  
-        @ContextConfiguration(name = "child", locations = "classpath:spring/spring-mvc.xml")  
-}) 
-public class GreetingControllerTest {
+public class GreetingControllerTest extends BasicWebTest{
 	
-	//注入web环境的ApplicationContext容器
-	@Autowired  
-    private WebApplicationContext webAppContext;  
-    private MockMvc mockMvc;  
-  
-    @Before  
-    public void setUp() {  
-    	//指定WebApplicationContext，将会从该上下文获取相应的控制器并得到相应的MockMvc
-        mockMvc = MockMvcBuilders.webAppContextSetup(webAppContext).build(); 
-    }  
-
     @Test  
     public void testPrintHello() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/greeting"))     //perform执行一个请求,MockMvcRequestBuilders.get(构造一个请求
