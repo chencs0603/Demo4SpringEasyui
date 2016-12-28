@@ -5,8 +5,9 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import personal.chencs.learn.domain.User;
+import personal.chencs.learn.test.BasicSpringTest;
 
-public class UserServiceTest extends BasicTest{
+public class UserServiceTest extends BasicSpringTest{
 	
 	@Autowired
 	private UserService userService;

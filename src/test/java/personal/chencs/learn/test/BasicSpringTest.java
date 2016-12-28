@@ -1,4 +1,4 @@
-package personal.chencs.learn.service;
+package personal.chencs.learn.test;
 
 import java.io.FileNotFoundException;
 
@@ -8,7 +8,7 @@ import org.springframework.util.Log4jConfigurer;
 
 @SuppressWarnings("deprecation")
 @ContextConfiguration(locations= {"classpath:spring/applicationContext.xml","classpath:spring/spring-mvc.xml"})
-public class BasicTest extends AbstractTransactionalJUnit4SpringContextTests {
+public class BasicSpringTest extends AbstractTransactionalJUnit4SpringContextTests {
 
 	static {
 		try {

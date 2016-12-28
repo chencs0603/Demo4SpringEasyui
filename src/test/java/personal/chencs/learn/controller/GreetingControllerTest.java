@@ -7,7 +7,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-public class GreetingControllerTest extends BasicWebTest{
+import personal.chencs.learn.test.BasicWebSpringTest;
+
+public class GreetingControllerTest extends BasicWebSpringTest{
 	
     @Test  
     public void testPrintHello() throws Exception {

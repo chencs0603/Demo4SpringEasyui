@@ -5,7 +5,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-public class UserControllerTest extends BasicWebTest{
+import personal.chencs.learn.test.BasicWebSpringTest;
+
+public class UserControllerTest extends BasicWebSpringTest{
 
 	@Test
 	public void testAdd() throws Exception {
