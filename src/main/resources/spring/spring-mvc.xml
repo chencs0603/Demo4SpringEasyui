@@ -5,13 +5,13 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
- 	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
- 	http://www.springframework.org/schema/mvc
- 	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
- 	http://www.springframework.org/schema/context
- 	http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+					 	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+					 	http://www.springframework.org/schema/mvc
+					 	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+					 	http://www.springframework.org/schema/context
+					 	http://www.springframework.org/schema/context/spring-context-4.0.xsd">
  	
- 	<!-- 自动扫描该包下的Spring组件（controller、service、repository等）注解，无需在xml中配置bean，<context:component-scan>已经包含了<context:annotation-config/>标签的功能 -->
+ 	<!-- 自动扫描该包下的Spring组件（controller、service、repository、Component等）注解，无需在xml中配置bean，<context:component-scan>已经包含了<context:annotation-config/>标签的功能 -->
 	<context:component-scan base-package="personal.chencs.learn" />
 
 	<!-- 使用@ResponseBoby将action返回的数据经默认的HttpMessageConverter转换后写入到Response对象的Body数据区，但HttpMessageConverter默认的编码方式为ISO-8859-1，会出现中文乱码的问题 -->
