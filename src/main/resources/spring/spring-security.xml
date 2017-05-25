@@ -6,17 +6,23 @@
           http://www.springframework.org/schema/security
           http://www.springframework.org/schema/security/spring-security-4.2.xsd">
 
-   <security:http auto-config="true">
-      <security:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
-   </security:http>    
+	<!--无需安全控制的URL -->
+	<security:http security="none" pattern="/greeting" />
 
-   <security:authentication-manager>
-      <security:authentication-provider>
-         <security:user-service>
-            <security:user name="user" password="user" authorities="ROLE_USER"/>
-            <security:user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN"/>
-         </security:user-service>
-      </security:authentication-provider>
-   </security:authentication-manager>
+	<security:http auto-config="true">
+		<security:intercept-url pattern="/**"
+			access="hasRole('ROLE_USER')" />
+	</security:http>
+
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user name="user" password="user"
+					authorities="ROLE_USER" />
+				<security:user name="admin" password="admin"
+					authorities="ROLE_USER, ROLE_ADMIN" />
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
 
 </beans>

@@ -13,6 +13,7 @@
 	
 	<!-- 引入Mybatis的bean配置文件 -->
 	<import resource="classpath:spring/spring-mybatis.xml"/>
+	<!-- 引入Spring Security配置文件 -->
 	<import resource="classpath:spring/spring-security.xml"/>
 	
 	<!-- 配置kaptcha验证码 -->
